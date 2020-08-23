@@ -19,25 +19,25 @@ public class WorkBreakUtil {
 	 */
 	public void rec(String s, Set<String> dict, List<String> list, List<String> ret) {
 		if (s.length() == 0) {
-			String concat = "";
+			String con = "";
 			for (int i = 0; i < list.size(); i++) {
-				concat += list.get(i);
+				con += list.get(i);
 				if (i != list.size() - 1) {
-					concat += " ";
+					con += " ";
 				}
 			}
-			ret.add(concat);
+			ret.add(con);
 			return;
 		}
-		for (String cur : dict) {
-			String temp = cur.replace(" ", "");
-			if (temp.length() > s.length()) {
+		for (String d : dict) {
+			String te = d.replace(" ", "");
+			if (te.length() > s.length()) {
 				continue;
 			}
-			String substr = s.substring(0, temp.length());
-			if (substr.equals(temp)) {
-				list.add(cur);
-				rec(s.substring(temp.length()), dict, list, ret);
+			String substr = s.substring(0, te.length());
+			if (te.equals(substr)) {
+				list.add(d);
+				rec(s.substring(te.length()), dict, list, ret);
 				list.remove(list.size() - 1);
 			}
 		}

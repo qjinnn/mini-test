@@ -87,7 +87,7 @@ public class WorkBreakTest extends TestCase {
     	}
     }
     @Test
-    public void testCaseFive() throws Exception {
+    public void testCaseFive()  {
     	try {
     	    Set<String> set = new HashSet<String>(
 			Arrays.asList("i", "like", "sam", "sung", "mobile", "icecream", "man go", "mango"));

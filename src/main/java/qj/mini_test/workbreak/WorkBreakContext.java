@@ -37,6 +37,7 @@ public class WorkBreakContext {
 		if (Objects.isNull(str)) {
 			throw new NullPointerException("请输入要分词的句子");
 		}
+		//只有默认字典情况下，字典才可以为空
 		if (!type.equals(WorkBreakEnum.one.getValue())&&dict==null) {
 			throw new NullPointerException("请输入字典");
 		}

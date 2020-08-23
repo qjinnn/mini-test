@@ -18,13 +18,13 @@ import qj.mini_test.workbreak.enums.WorkBreakEnum;
  * @author 	qj
  * @date  2020/8/22
  */
-public class AppTest extends TestCase {
+public class WorkBreakTest extends TestCase {
 	@Test
 	public void testOne() throws Exception {
-		List<String> sentences = WorkBreakContext.getSentences("ilikesamsungmobile", null, WorkBreakEnum.one.getValue());
-		sentences.forEach(System.out::println);
-		sentences = WorkBreakContext.getSentences("ilikeicecreamandmango", null, WorkBreakEnum.one.getValue());
-		sentences.forEach(System.out::println);
+		List<String> sentencesList = WorkBreakContext.getSentences("ilikesamsungmobile", null, WorkBreakEnum.one.getValue());
+		sentencesList.forEach(System.out::println);
+		sentencesList = WorkBreakContext.getSentences("ilikeicecreamandmango", null, WorkBreakEnum.one.getValue());
+		sentencesList.forEach(System.out::println);
 
 	}
 
@@ -32,8 +32,8 @@ public class AppTest extends TestCase {
 	public void testTow() throws Exception {
 		Set<String> set = new HashSet<String>(
 				Arrays.asList("i", "like", "sam", "sung", "mobile", "icecream", "man go", "mango", "and"));
-		List<String> sentences = WorkBreakContext.getSentences("ilikesamsungmobile", set, WorkBreakEnum.tow.getValue());
-		sentences.forEach(System.out::println);
+		List<String> sentencesList = WorkBreakContext.getSentences("ilikesamsungmobile", set, WorkBreakEnum.tow.getValue());
+		sentencesList.forEach(System.out::println);
 
 	}
 
@@ -41,8 +41,8 @@ public class AppTest extends TestCase {
 	public void testTree() throws Exception {
 		Set<String> set = new HashSet<String>(
 				Arrays.asList("i", "like", "sam", "sung", "mobile", "icecream", "man go", "mango"));
-		List<String> sentences = WorkBreakContext.getSentences("ilikesamsungmobile", set, WorkBreakEnum.three.getValue());
-		sentences.forEach(System.out::println);
+		List<String> sentencesList = WorkBreakContext.getSentences("ilikesamsungmobile", set, WorkBreakEnum.three.getValue());
+		sentencesList.forEach(System.out::println);
 	}
 	
 	
@@ -84,6 +84,17 @@ public class AppTest extends TestCase {
     	} catch (Exception e) {
     		assertTrue(e instanceof RuntimeException);
     		assertEquals(e.getMessage(), "请输入正确的类型");
+    	}
+    }
+    @Test
+    public void testCaseFive() throws Exception {
+    	try {
+    	    Set<String> set = new HashSet<String>(
+			Arrays.asList("i", "like", "sam", "sung", "mobile", "icecream", "man go", "mango"));
+    		WorkBreakContext.getSentences("test",set,  WorkBreakEnum.three.getValue());
+    	} catch (Exception e) {
+    		assertTrue(e instanceof RuntimeException);
+    		assertEquals(e.getMessage(), "字典中当前的字数无法反汇编！");
     	}
     }
     
